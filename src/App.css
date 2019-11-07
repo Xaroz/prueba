@@ -60,6 +60,11 @@ header {
   border: none;
   color: white;
 }
+.wrong-credential {
+  margin-top: 15px;
+  color: #721c24;
+}
+
 .img-container {
   background-color: white;
   width: 40px;
