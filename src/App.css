@@ -6,6 +6,15 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
 }
+header {
+  padding: 15px;
+  background-color: #228b22;
+  display: flex;
+  justify-content: flex-end;
+
+  color: white;
+}
+
 .login-container {
   display: flex;
   justify-content: center;
@@ -50,4 +59,41 @@ body {
   background-color: #28a845;
   border: none;
   color: white;
+}
+.img-container {
+  background-color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50px;
+  border: 1px solid black;
+  cursor: pointer;
+
+  position: relative;
+  right: 60px;
+}
+img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50px;
+}
+.menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+  right: 45px;
+  width: 130px;
+  height: 70px;
+  background: white;
+  cursor: default;
+  text-align: center;
+  border: 1px solid black;
+}
+.menu ul {
+  list-style-type: none;
+}
+.menu a {
+  text-decoration: none;
+  color: black;
 }
