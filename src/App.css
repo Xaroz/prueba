@@ -152,5 +152,59 @@ table th {
   background-color: #228b22;
   color: white;
 }
-
+.button-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+.view,
+.edit,
+.delete {
+  padding: 5px 10px 5px 10px;
+  border: 1px solid gray;
+}
+.view {
+  background-color: #24a0ed;
+  border: 1px solid gray;
+}
+.view:hover {
+  border: 1px solid gray;
+  background-color: #63bbf2;
+}
+.view:active {
+  border: 1px solid black;
+  background-color: #1183ca;
+}
+.delete {
+  background-color: #ff878d;
+  border: 1px solid gray;
+}
+.delete:hover {
+  border: 1px solid gray;
+  background-color: #ffc4c4;
+}
+.delete:active {
+  border: 1px solid black;
+  background-color: #f08080;
+}
+.edit:hover {
+  background-color: #ddd;
+}
+.edit:active {
+  background-color: #9c9c9c;
+  border: 1px solid black;
+}
 /* Table */
+.pagination {
+  margin-top: 25px;
+  text-align: center;
+}
+.prev {
+  margin-right: 10px;
+}
+.next {
+  margin-left: 10px;
+}
+.prev,
+.next {
+  padding: 0px 10px 0px 10px;
+}

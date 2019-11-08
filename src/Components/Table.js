@@ -1,69 +1,28 @@
 import React from "react";
+import MdEye from "react-ionicons/lib/MdEye";
+import MdTrash from "react-ionicons/lib/MdTrash";
+import MdCreate from "react-ionicons/lib/MdCreate";
 
 export const Table = props => {
   return (
-    <table>
-      <thead>
-        <tr>
-          <th>id</th>
-          <th>Nombre</th>
-          <th>Correo eletrónico</th>
-          <th>Género</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>1</td>
-          <td>Jason Guo</td>
-          <td>jasonguo@hotmail.com</td>
-          <td>M</td>
-          <td>
-            <button>hola</button>
-            <button>hola</button>
-          </td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>Jason Guo</td>
-          <td>jasonguo@hotmail.com</td>
-          <td>M</td>
-          <td>
-            <button>hola</button>
-            <button>hola</button>
-          </td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>Jason Guo</td>
-          <td>jasonguo@hotmail.com</td>
-          <td>M</td>
-          <td>
-            <button>hola</button>
-            <button>hola</button>
-          </td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>Jason Guo</td>
-          <td>1</td>
-          <td>1</td>
-          <td>
-            <button>hola</button>
-            <button>hola</button>
-          </td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>Jason Guo</td>
-          <td>jasonguo@hotmail.com</td>
-          <td>M</td>
-          <td>
-            <button>hola</button>
-            <button>hola</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <>
+      <tr>
+        <td>{props.user.id}</td>
+        <td>{props.user.name}</td>
+        <td>{props.user.email}</td>
+        <td>{props.user.gender}</td>
+        <td className="button-container">
+          <button className="view">
+            <MdEye />
+          </button>
+          <button className="edit">
+            <MdCreate />
+          </button>
+          <button className="delete">
+            <MdTrash />
+          </button>
+        </td>
+      </tr>
+    </>
   );
 };
