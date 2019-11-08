@@ -40,12 +40,14 @@ export const Login = () => {
           <Input
             name="username"
             text="Usuario"
+            value={login.username}
             handleInputChange={handleInputChange}
           />
           <Input
             name="password"
             text="Contraseña"
             typeName="password"
+            value={login.password}
             handleInputChange={handleInputChange}
           />
           <button>Acceder</button>

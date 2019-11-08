@@ -10,6 +10,7 @@ export default function Input(props) {
         onChange={props.handleInputChange}
         name={props.name}
         type={props.typeName}
+        value={props.value}
         required
       />
     </div>

@@ -2,8 +2,9 @@ import React from "react";
 
 export const Dashboard = () => {
   return (
-    <div>
+    <div className="content">
       <h1>Dashboard</h1>
+      <hr />
     </div>
   );
 };

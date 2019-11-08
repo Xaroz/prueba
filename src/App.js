@@ -6,14 +6,18 @@ import { Dashboard } from "./Pages/Dashboard";
 import { UserList } from "./Pages/UserList";
 import { AddUser } from "./Pages/AddUser";
 import { NavBar } from "./Components/NavBar";
+import { SideBar } from "./Components/SideBar";
 
 function App() {
   const DashboardRoute = () => (
     <>
       <NavBar />
-      <Route exact path="/dashboard" component={Dashboard}></Route>
-      <Route exact path="/users" component={UserList}></Route>
-      <Route exact path="/add" component={AddUser}></Route>
+      <div className="container">
+        <SideBar />
+        <Route exact path="/dashboard" component={Dashboard}></Route>
+        <Route exact path="/users" component={UserList}></Route>
+        <Route exact path="/add" component={AddUser}></Route>
+      </div>
     </>
   );
 
