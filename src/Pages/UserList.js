@@ -5,17 +5,15 @@ import MdArrowRoundForward from "react-ionicons/lib/MdArrowRoundForward";
 import MdArrowRoundBack from "react-ionicons/lib/MdArrowRoundBack";
 
 export const UserList = () => {
-  const { users } = useContext(UsersContext);
+  const { users, setUsers } = useContext(UsersContext);
   const [pageSize] = useState(5);
   const [currentPage, setCurrentPage] = useState(0);
-  const [currentUsers, setCurrentUsers] = useState([]);
 
-  useEffect(() => {
-    setCurrentUsers(
-      users.slice(currentPage * pageSize, pageSize * (currentPage + 1))
-    );
-    document.title = "Lista de Usuarios";
-  }, [users, setCurrentUsers, pageSize, currentPage]);
+  // useEffect(() => {
+  //   setCurrentUsers(
+  //     users.slice(currentPage * pageSize, pageSize * (currentPage + 1))
+  //   );
+  // }, [users, pageSize, currentPage]);
 
   useEffect(() => {
     document.title = "Lista de Usuarios";
@@ -35,6 +33,11 @@ export const UserList = () => {
       setCurrentPage(currentPage - 1);
     }
   };
+
+  const DeleteUser = id => {
+    setUsers(users.filter(user => user.id !== id));
+  };
+
   return (
     <div className="content">
       <h1>Lista de usuarios</h1>
@@ -49,9 +52,11 @@ export const UserList = () => {
           </tr>
         </thead>
         <tbody>
-          {currentUsers.map(user => (
-            <Table key={user.id} user={user} />
-          ))}
+          {users
+            .slice(currentPage * pageSize, pageSize * (currentPage + 1))
+            .map(user => (
+              <Table key={user.id} user={user} DeleteUser={DeleteUser} />
+            ))}
         </tbody>
       </table>
       <div className="pagination">

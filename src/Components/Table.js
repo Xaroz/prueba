@@ -4,13 +4,14 @@ import MdTrash from "react-ionicons/lib/MdTrash";
 import MdCreate from "react-ionicons/lib/MdCreate";
 
 export const Table = props => {
+  const user = props.user;
   return (
     <>
       <tr>
-        <td>{props.user.id}</td>
-        <td>{props.user.name}</td>
-        <td>{props.user.email}</td>
-        <td>{props.user.gender}</td>
+        <td>{user.id}</td>
+        <td>{user.name}</td>
+        <td>{user.email}</td>
+        <td>{user.gender}</td>
         <td className="button-container">
           <button className="view">
             <MdEye />
@@ -18,7 +19,7 @@ export const Table = props => {
           <button className="edit">
             <MdCreate />
           </button>
-          <button className="delete">
+          <button className="delete" onClick={() => props.DeleteUser(user.id)}>
             <MdTrash />
           </button>
         </td>

@@ -5,7 +5,7 @@ export const SideBar = () => {
   return (
     <div className="sidebar">
       <Link to="/dashboard">Dashboard</Link>
-      <Link to="/users">Lista de usuario</Link>
+      <Link to="/users">Lista de usuarios</Link>
       <Link to="/add">Agregar usuario</Link>
     </div>
   );
