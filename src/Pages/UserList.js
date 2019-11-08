@@ -1,53 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Table } from "../Components/Table";
+import { UsersContext } from "../Components/UsersContext";
 import MdArrowRoundForward from "react-ionicons/lib/MdArrowRoundForward";
 import MdArrowRoundBack from "react-ionicons/lib/MdArrowRoundBack";
 
 export const UserList = () => {
-  const [users, setUsers] = useState([
-    {
-      id: "1",
-      name: "Jason Guo",
-      email: "jasonguo@gg.com",
-      gender: "M"
-    },
-    {
-      id: "2",
-      name: "Jason Guo",
-      email: "jasonguo@gg.com",
-      gender: "M"
-    },
-    {
-      id: "3",
-      name: "Jason Guo",
-      email: "jasonguo@gg.com",
-      gender: "M"
-    },
-    {
-      id: "4",
-      name: "Jason Guo",
-      email: "jasonguo@gg.com",
-      gender: "M"
-    },
-    {
-      id: "5",
-      name: "Jason Guo",
-      email: "jasonguo@gg.com",
-      gender: "M"
-    },
-    {
-      id: "6",
-      name: "Jason Guo",
-      email: "jasonguo@gg.com",
-      gender: "M"
-    },
-    {
-      id: "7",
-      name: "Jason Guo",
-      email: "jasonguo@gg.com",
-      gender: "M"
-    }
-  ]);
+  const { users } = useContext(UsersContext);
   const [pageSize] = useState(5);
   const [currentPage, setCurrentPage] = useState(0);
   const [currentUsers, setCurrentUsers] = useState([]);
