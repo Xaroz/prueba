@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export default function DirectionsForm({ register, errors }) {
+export default function FieldArray({ register, errors }) {
   const [directions, setDirections] = useState([]);
   const [counter, setCounter] = useState(0);
 
@@ -36,7 +36,6 @@ export default function DirectionsForm({ register, errors }) {
                 })}
               />
             </label>
-
             <button type="button" onClick={removeDirection(index)}>
               X
             </button>
