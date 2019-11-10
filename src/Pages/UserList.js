@@ -9,15 +9,10 @@ export const UserList = () => {
   const [pageSize] = useState(5);
   const [currentPage, setCurrentPage] = useState(0);
 
-  // useEffect(() => {
-  //   setCurrentUsers(
-  //     users.slice(currentPage * pageSize, pageSize * (currentPage + 1))
-  //   );
-  // }, [users, pageSize, currentPage]);
-
   useEffect(() => {
     document.title = "Lista de Usuarios";
-  }, []);
+    console.log(users);
+  }, [users]);
 
   const NextPage = () => {
     if (users.length <= pageSize * (currentPage + 1)) {

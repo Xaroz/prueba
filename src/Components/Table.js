@@ -8,7 +8,13 @@ export const Table = props => {
     <>
       <tr>
         <td>{props.user.id}</td>
-        <td>{props.user.name}</td>
+        <td>
+          {props.user.name +
+            " " +
+            props.user.firstLastName +
+            " " +
+            props.user.secondLastName}
+        </td>
         <td>{props.user.email}</td>
         <td>{props.user.gender}</td>
         <td className="button-container">

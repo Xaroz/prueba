@@ -13,49 +13,25 @@ function App() {
   const [users, setUsers] = useState([
     {
       id: "1",
-      name: "Jason Guo",
+      age: 22,
+      birthDate: "2019-05-04",
+      civilStatus: "Soltero/a",
+      firstLastName: "Guo",
+      hasChild: "No",
+      idCard: "12345678901",
+      name: "Jason",
+      phone: "8886543215",
+      secondLastName: "Jinliu",
       email: "jasonguo@gg.com",
-      gender: "M"
-    },
-    {
-      id: "2",
-      name: "Jason Guo",
-      email: "jasonguo@gg.com",
-      gender: "M"
-    },
-    {
-      id: "3",
-      name: "Jason Guo",
-      email: "jasonguo@gg.com",
-      gender: "M"
-    },
-    {
-      id: "4",
-      name: "Jason Guo",
-      email: "jasonguo@gg.com",
-      gender: "M"
-    },
-    {
-      id: "5",
-      name: "Jason Guo",
-      email: "jasonguo@gg.com",
-      gender: "M"
-    },
-    {
-      id: "6",
-      name: "Jason Guo",
-      email: "jasonguo@gg.com",
-      gender: "M"
-    },
-    {
-      id: "7",
-      name: "Jason Guo",
-      email: "jasonguo@gg.com",
-      gender: "M"
+      gender: "Hombre"
     }
   ]);
+  const [lastUsedId, setLastUsedId] = useState(1);
 
-  const value = useMemo(() => ({ users, setUsers }), [users, setUsers]);
+  const value = useMemo(
+    () => ({ users, setUsers, lastUsedId, setLastUsedId }),
+    [users, setUsers, lastUsedId, setLastUsedId]
+  );
   const DashboardRoute = () => (
     <>
       <NavBar />

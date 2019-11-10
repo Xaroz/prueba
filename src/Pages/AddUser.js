@@ -1,14 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
 import useForm from "react-hook-form";
 import FieldArray from "../Components/FieldArray";
+import { UsersContext } from "../Components/UsersContext";
 
 export const AddUser = () => {
   const { register, handleSubmit, errors } = useForm();
+  const { users, setUsers, lastUsedId, setLastUsedId } = useContext(
+    UsersContext
+  );
 
   const onSubmit = data => {
-    const age = calculateAge(data.date);
-    data = { ...data, age };
-    console.log(data);
+    data.age = calculateAge(data.birthDate);
+    const newId = lastUsedId + 1;
+    setLastUsedId(newId);
+    data.id = newId;
+    setUsers([...users, data]);
   };
 
   const calculateAge = dateString => {
@@ -152,15 +158,16 @@ export const AddUser = () => {
           <option value="Si">Si</option>
         </select>
 
+        {/* fecha de nacimiento */}
         <input
-          name="date"
+          name="birthDate"
           type="date"
           ref={register({
             required: true
           })}
         />
-        {errors.date &&
-          errors.date.type === "required" &&
+        {errors.birthDate &&
+          errors.birthDate.type === "required" &&
           "Este campo es requerido"}
         <input type="submit" value="Agregar usuario" />
       </form>
