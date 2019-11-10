@@ -27,10 +27,11 @@ function App() {
     }
   ]);
   const [lastUsedId, setLastUsedId] = useState(1);
+  const [sucess, setSucess] = useState(false);
 
   const value = useMemo(
-    () => ({ users, setUsers, lastUsedId, setLastUsedId }),
-    [users, setUsers, lastUsedId, setLastUsedId]
+    () => ({ users, setUsers, lastUsedId, setLastUsedId, sucess, setSucess }),
+    [users, setUsers, lastUsedId, setLastUsedId, sucess, setSucess]
   );
   const DashboardRoute = () => (
     <>

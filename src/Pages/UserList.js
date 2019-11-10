@@ -11,8 +11,7 @@ export const UserList = () => {
 
   useEffect(() => {
     document.title = "Lista de Usuarios";
-    console.log(users);
-  }, [users]);
+  });
 
   const NextPage = () => {
     if (users.length <= pageSize * (currentPage + 1)) {

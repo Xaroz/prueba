@@ -1,13 +1,25 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import useForm from "react-hook-form";
 import FieldArray from "../Components/FieldArray";
 import { UsersContext } from "../Components/UsersContext";
+import { useHistory } from "react-router-dom";
 
 export const AddUser = () => {
   const { register, handleSubmit, errors } = useForm();
-  const { users, setUsers, lastUsedId, setLastUsedId } = useContext(
-    UsersContext
-  );
+  const {
+    users,
+    setUsers,
+    lastUsedId,
+    setLastUsedId,
+    sucess,
+    setSucess
+  } = useContext(UsersContext);
+  let history = useHistory();
+
+  // const changePage = setTimeout(() => {
+  //   alert("Hello world");
+  //   history.push("/users");
+  // }, 5000);
 
   const onSubmit = data => {
     data.age = calculateAge(data.birthDate);
@@ -15,7 +27,19 @@ export const AddUser = () => {
     setLastUsedId(newId);
     data.id = newId;
     setUsers([...users, data]);
+    setSucess(true);
   };
+
+  useEffect(() => {
+    if (sucess) {
+      setTimeout(() => {
+        history.push("/users");
+      }, 1500);
+      return () => {
+        setSucess(false);
+      };
+    }
+  }, [sucess, history, setSucess]);
 
   const calculateAge = dateString => {
     let today = new Date();
@@ -171,6 +195,9 @@ export const AddUser = () => {
           "Este campo es requerido"}
         <input type="submit" value="Agregar usuario" />
       </form>
+      {sucess ? (
+        <span>Usuario agregado! Redirigiendo a la lista de usuarios....</span>
+      ) : null}
     </div>
   );
 };
