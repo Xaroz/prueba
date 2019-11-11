@@ -242,7 +242,6 @@ export const AddUser = () => {
           {/* direcciones */}
           <div className="row direction-container">
             <div className="column">
-              <p>Direcciones:</p>
               <FieldArray register={register} errors={errors} />
             </div>
           </div>

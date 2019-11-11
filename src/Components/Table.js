@@ -18,12 +18,12 @@ export const Table = props => {
         <td>{props.user.email}</td>
         <td>{props.user.gender}</td>
         <td className="button-container">
-          <button className="view">
+          {/* <button className="view">
             <MdEye />
           </button>
           <button className="edit">
             <MdCreate />
-          </button>
+          </button> */}
           <button
             className="delete"
             onClick={() => props.DeleteUser(props.user.id)}

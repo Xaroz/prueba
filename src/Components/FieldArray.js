@@ -22,6 +22,19 @@ export default function FieldArray({ register, errors }) {
 
   return (
     <div>
+      <div className="direction-add-delete">
+        <p className="direction-title">Direcciones:</p>
+        <button className="direction-add" type="button" onClick={addDirection}>
+          Agregar dirección
+        </button>
+        <button
+          className="direction-delete"
+          type="button"
+          onClick={clearDirections}
+        >
+          Eliminar direcciones
+        </button>
+      </div>
       {directions.map(index => {
         const fieldName = `direction[${index}]`;
         return (
@@ -30,7 +43,9 @@ export default function FieldArray({ register, errors }) {
             <input
               type="text"
               name={`${fieldName}`}
-              className="direction"
+              className={
+                errors[fieldName] ? "direction has-error" : "direction"
+              }
               ref={register({
                 required: true
               })}
@@ -43,23 +58,11 @@ export default function FieldArray({ register, errors }) {
               X
             </button>
             {errors[fieldName] && errors[fieldName].type === "required" && (
-              <span>Este campo es requerido</span>
+              <p className="error-alert">Este campo es requerido</p>
             )}
           </div>
         );
       })}
-      <div className="direction-add-delete">
-        <button className="direction-add" type="button" onClick={addDirection}>
-          Agregar dirección
-        </button>
-        <button
-          className="direction-delete"
-          type="button"
-          onClick={clearDirections}
-        >
-          Eliminar direcciones
-        </button>
-      </div>
     </div>
   );
 }
