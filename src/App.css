@@ -210,11 +210,15 @@ table th {
 }
 
 /* Add User */
+.form-container {
+  display: flex;
+  justify-content: center;
+}
 .add-container {
-  border: 1px solid black;
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 40%;
 }
 .row {
   display: flex;
@@ -233,7 +237,7 @@ table th {
   margin: 0px 10px 3px 0px;
 }
 .gender {
-  margin-right: 110px;
+  margin-right: 100px;
 }
 .column select {
   padding: 3px 50px 3px 0px;
@@ -241,15 +245,51 @@ table th {
 }
 
 .civil-status {
-  margin-right: 70px;
+  margin-right: 60px;
 }
 
 .birth-date input {
   padding: 3px 0px 3px 0px;
 }
 .has-child {
-  margin-right: 90px;
+  margin-right: 80px;
 }
 .birth-date {
-  margin-right: 35px;
+  margin-right: 25px;
+}
+.row span {
+  color: #d8000c;
+}
+.user-added {
+  padding: 5px 0px 5px 0;
+  background-color: #5dfc0a;
+  text-align: center;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+.has-error {
+  border: 1px solid #d8000c;
+}
+.direction {
+  display: inline !important;
+}
+.direction-button {
+  padding: 3px 6px 3px 6px;
+}
+.direction-add-delete {
+  display: flex;
+  margin-top: 10px;
+}
+.direction-add-delete button,
+.submit-button {
+  padding: 5px 10px 5px 10px;
+}
+.direction-add {
+  margin-right: 10px;
+}
+.direction-delete {
+  margin-left: 10px;
+}
+.direction-container {
+  justify-content: flex-start;
 }
