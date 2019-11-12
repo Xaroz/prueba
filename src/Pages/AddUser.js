@@ -16,11 +16,6 @@ export const AddUser = () => {
   } = useContext(UsersContext);
   let history = useHistory();
 
-  // const changePage = setTimeout(() => {
-  //   alert("Hello world");
-  //   history.push("/users");
-  // }, 5000);
-
   const onSubmit = data => {
     data.age = calculateAge(data.birthDate);
     const newId = lastUsedId + 1;
@@ -56,147 +51,226 @@ export const AddUser = () => {
     <div className="content">
       <h1>Agregar un usuario</h1>
       <hr />
-      <form onSubmit={handleSubmit(onSubmit)}>
-        {/* nombre */}
-        <input
-          name="name"
-          placeholder="Nombres"
-          ref={register({
-            required: true,
-            pattern: /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/
-          })}
-        />
-        {errors.name &&
-          errors.name.type === "required" &&
-          "Este campo es necesario"}
-        {errors.name &&
-          errors.name.type === "pattern" &&
-          "Solo se permiten letras sin tildes"}
+      <div className="form-container">
+        <form className="add-container" onSubmit={handleSubmit(onSubmit)}>
+          {/* nombre */}
+          <div className="row">
+            <div className="column">
+              <label htmlFor="name"> Nombre Completo</label>
+              <input
+                className={errors.name ? "has-error" : null}
+                name="name"
+                placeholder="Nombres"
+                ref={register({
+                  required: true,
+                  pattern: /^[a-zA-ZÁÉÓÚáéíóúñÑ]+(([',. -][a-zA-ZáÁÉÓÚáéíóúñÑ ])?[a-zA-ZÁÉÓÚáéíóúñÑ]*)*$/
+                })}
+              />
+              {errors.name && errors.name.type === "required" && (
+                <span>Este campo es necesario</span>
+              )}
+              {errors.name && errors.name.type === "pattern" && (
+                <span>Solo se permiten letras</span>
+              )}
+            </div>
 
-        {/* primer apellido */}
-        <input
-          name="firstLastName"
-          placeholder="Primer apellido"
-          ref={register({
-            required: true,
-            pattern: /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/
-          })}
-        />
-        {errors.firstLastName &&
-          errors.firstLastName.type === "required" &&
-          "Este campo es necesario"}
-        {errors.firstLastName &&
-          errors.firstLastName.type === "pattern" &&
-          "Solo se permiten letras sin tildes"}
+            <div className="column">
+              {/* primer apellido */}
+              <label htmlFor="firstLastName">Primer Apellido</label>
+              <input
+                name="firstLastName"
+                placeholder="Primer apellido"
+                className={errors.firstLastName ? "has-error" : null}
+                ref={register({
+                  required: true,
+                  pattern: /^[a-zA-ZÁÉÓÚáéíóúñÑ]+(([',. -][a-zA-ZáÁÉÓÚáéíóúñÑ ])?[a-zA-ZÁÉÓÚáéíóúñÑ]*)*$/
+                })}
+              />
+              {errors.firstLastName &&
+                errors.firstLastName.type === "required" && (
+                  <span>Este campo es requerido</span>
+                )}
+              {errors.firstLastName &&
+                errors.firstLastName.type === "pattern" && (
+                  <span>Solo se permiten letras</span>
+                )}
+            </div>
+          </div>
 
-        {/* segundo apellido */}
-        <input
-          name="secondLastName"
-          placeholder="Segundo apellido"
-          ref={register({
-            pattern: /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/
-          })}
-        />
-        {errors.secondLastName &&
-          errors.secondLastName.type === "pattern" &&
-          "Solo se permiten letras sin tildes"}
+          <div className="row">
+            <div className="column">
+              <label htmlFor="idCard">Cédula</label>
+              <input
+                name="idCard"
+                className={errors.idCard ? "has-error" : null}
+                placeholder="Cédula"
+                ref={register({
+                  required: true,
+                  pattern: /^[0-9]*$/,
+                  maxLength: 11,
+                  minLength: 11
+                })}
+              />
+              {errors.idCard && errors.idCard.type === "required" && (
+                <span>Este campo es requerido</span>
+              )}
+              {errors.idCard && errors.idCard.type === "pattern" && (
+                <span>Solo se permiten números</span>
+              )}
+              {errors.idCard &&
+                (errors.idCard.type === "maxLength" ||
+                  errors.idCard.type === "minLength") && (
+                  <span>Cédula inválida</span>
+                )}
+            </div>
+            {/* cedula */}
 
-        {/* cedula */}
-        <input
-          name="idCard"
-          placeholder="Cédula"
-          ref={register({
-            required: true,
-            pattern: /^[0-9]*$/,
-            maxLength: 11,
-            minLength: 11
-          })}
-        />
-        {errors.idCard &&
-          errors.idCard.type === "required" &&
-          "Este campo es necesario"}
-        {errors.idCard &&
-          errors.idCard.type === "pattern" &&
-          "Solo se permiten números"}
-        {errors.idCard &&
-          (errors.idCard.type === "maxLength" ||
-            errors.idCard.type === "minLength") &&
-          "Cédula inválida"}
+            <div className="column">
+              {/* segundo apellido */}
+              <label htmlFor="secondLastName">Segundo Apellido</label>
+              <input
+                className={errors.secondLastName ? "has-error" : null}
+                name="secondLastName"
+                placeholder="Segundo apellido"
+                ref={register({
+                  pattern: /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/
+                })}
+              />
+              {errors.secondLastName &&
+                errors.secondLastName.type === "pattern" && (
+                  <span>Solo se permiten letras</span>
+                )}
+            </div>
+          </div>
 
-        {/* genero */}
-        <label htmlFor="gender"> Género</label>
-        <select name="gender" ref={register}>
-          <option value="Hombre">Hombre</option>
-          <option value="Mujer">Mujer</option>
-        </select>
+          <div className="row">
+            <div className="column">
+              {/* telefono */}
+              <label htmlFor="phone">Número de teléfono</label>
+              <input
+                className={errors.phone ? "has-error" : null}
+                name="phone"
+                placeholder="Teléfono"
+                ref={register({
+                  required: true,
+                  pattern: /^[0-9]*$/,
+                  maxLength: 10,
+                  minLength: 10
+                })}
+              />
+              {errors.phone && errors.phone.type === "required" && (
+                <span>Este campo es requerido</span>
+              )}
+              {errors.phone && errors.phone.type === "pattern" && (
+                <span>Solo se permiten números</span>
+              )}
+              {errors.phone &&
+                (errors.phone.type === "maxLength" ||
+                  errors.phone.type === "minLength") && (
+                  <span>Teléfono inválida</span>
+                )}
+            </div>
 
-        {/* direcciones */}
-        <FieldArray register={register} errors={errors} />
+            <div className="column">
+              {/* correo */}
+              <label htmlFor="email">Correo Electrónico</label>
+              <input
+                name="email"
+                className={errors.email ? "has-error" : null}
+                placeholder="Correo electrónico"
+                ref={register({
+                  required: true,
+                  pattern: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+                })}
+              />
+              {errors.email && errors.email.type === "required" && (
+                <span>Este campo es requerido</span>
+              )}
+              {errors.email && errors.email.type === "pattern" && (
+                <span>Correo electrónico inválido</span>
+              )}
+            </div>
+          </div>
 
-        {/* telefono */}
-        <input
-          name="phone"
-          placeholder="Teléfono"
-          ref={register({
-            required: true,
-            pattern: /^[0-9]*$/,
-            maxLength: 10,
-            minLength: 10
-          })}
-        />
-        {errors.phone &&
-          errors.phone.type === "required" &&
-          "Este campo es necesario"}
-        {errors.phone &&
-          errors.phone.type === "pattern" &&
-          "Solo se permiten números"}
-        {errors.phone &&
-          (errors.phone.type === "maxLength" ||
-            errors.phone.type === "minLength") &&
-          "Teléfono inválido"}
+          <div className="row">
+            <div className="column gender">
+              {/* genero */}
+              <label htmlFor="gender"> Género</label>
+              <select name="gender" ref={register}>
+                <option value="Hombre">Hombre</option>
+                <option value="Mujer">Mujer</option>
+              </select>
+            </div>
+            <div className="column civil-status">
+              {/* estado civil */}
+              <label htmlFor="civilStatus"> Estado Civil</label>
+              <select name="civilStatus" ref={register}>
+                <option value="Soltero/a">Soltero/a</option>
+                <option value="Casado/a">Casado/a</option>
+                <option value="Divorciado/a">Divorciado/a/a</option>
+              </select>
+            </div>
+          </div>
 
-        {/* correo */}
-        <input
-          name="email"
-          placeholder="Correo electrónico"
-          ref={register({
-            pattern: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-          })}
-        />
-        {errors.email &&
-          errors.email.type === "pattern" &&
-          "Correo electrónico inválido"}
+          <div className="row">
+            <div className="column has-child">
+              {/* hijos */}
+              <label htmlFor="hasChild"> ¿Tiene hijos?</label>
+              <select name="hasChild" ref={register}>
+                <option value="No">No</option>
+                <option value="Si">Si</option>
+              </select>
+            </div>
 
-        {/* estado civil */}
-        <label htmlFor="civilStatus"> Estado Civil</label>
-        <select name="civilStatus" ref={register}>
-          <option value="Soltero/a">Soltero/a</option>
-          <option value="Casado/a">Casado/a</option>
-          <option value="Divorciado/a">Divorciado/a/a</option>
-        </select>
+            <div className="column birth-date">
+              {/* fecha de nacimiento */}
+              <label htmlFor="birthDate"> Fecha de Nacimiento</label>
+              <input
+                className={errors.birthDate ? "has-error" : null}
+                name="birthDate"
+                type="date"
+                ref={register({
+                  required: true
+                })}
+              />
+              {errors.birthDate && errors.birthDate.type === "required" && (
+                <span>Este campo es requerido</span>
+              )}
+            </div>
+          </div>
 
-        {/* hijos */}
-        <label htmlFor="hasChild"> ¿Tiene hijos?</label>
-        <select name="hasChild" ref={register}>
-          <option value="No">No</option>
-          <option value="Si">Si</option>
-        </select>
+          {/* direcciones */}
+          <div className="row direction-container">
+            <div className="column">
+              <FieldArray register={register} errors={errors} />
+            </div>
+          </div>
 
-        {/* fecha de nacimiento */}
-        <input
-          name="birthDate"
-          type="date"
-          ref={register({
-            required: true
-          })}
-        />
-        {errors.birthDate &&
-          errors.birthDate.type === "required" &&
-          "Este campo es requerido"}
-        <input type="submit" value="Agregar usuario" />
-      </form>
+          {sucess ? (
+            <input
+              className="submit-button"
+              disabled
+              type="submit"
+              value="Agregar usuario"
+            />
+          ) : (
+            <input
+              className="submit-button"
+              type="submit"
+              value="Agregar usuario"
+            />
+          )}
+        </form>
+      </div>
+
+      <hr />
       {sucess ? (
-        <span>Usuario agregado! Redirigiendo a la lista de usuarios....</span>
+        <div className="user-added">
+          <p>
+            <strong>¡Usuario agregado!</strong> Redirigiendo a la lista de
+            usuarios...
+          </p>
+        </div>
       ) : null}
     </div>
   );

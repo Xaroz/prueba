@@ -22,36 +22,47 @@ export default function FieldArray({ register, errors }) {
 
   return (
     <div>
+      <div className="direction-add-delete">
+        <p className="direction-title">Direcciones:</p>
+        <button className="direction-add" type="button" onClick={addDirection}>
+          Agregar dirección
+        </button>
+        <button
+          className="direction-delete"
+          type="button"
+          onClick={clearDirections}
+        >
+          Eliminar direcciones
+        </button>
+      </div>
       {directions.map(index => {
         const fieldName = `direction[${index}]`;
         return (
           <div name={fieldName} key={fieldName}>
-            <label>
-              Dirección #{index + 1}:
-              <input
-                type="text"
-                name={`${fieldName}`}
-                ref={register({
-                  required: true
-                })}
-              />
-            </label>
-            <button type="button" onClick={removeDirection(index)}>
+            <label className="direction">Dirección #{index + 1}:</label>
+            <input
+              type="text"
+              name={`${fieldName}`}
+              className={
+                errors[fieldName] ? "direction has-error" : "direction"
+              }
+              ref={register({
+                required: true
+              })}
+            />
+            <button
+              className="direction-button"
+              type="button"
+              onClick={removeDirection(index)}
+            >
               X
             </button>
-            {errors[fieldName] &&
-              errors[fieldName].type === "required" &&
-              "Este campo es requerido"}
+            {errors[fieldName] && errors[fieldName].type === "required" && (
+              <p className="error-alert">Este campo es requerido</p>
+            )}
           </div>
         );
       })}
-
-      <button type="button" onClick={addDirection}>
-        Agregar dirección
-      </button>
-      <button type="button" onClick={clearDirections}>
-        Eliminar direcciones
-      </button>
     </div>
   );
 }

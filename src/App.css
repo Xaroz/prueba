@@ -187,7 +187,7 @@ table th {
   background-color: #f08080;
 }
 .edit:hover {
-  background-color: #F5F5F5;
+  background-color: #f5f5f5;
 }
 .edit:active {
   background-color: #9c9c9c;
@@ -207,4 +207,137 @@ table th {
 .prev,
 .next {
   padding: 0px 10px 0px 10px;
+}
+
+/* Add User */
+.form-container {
+  display: flex;
+  justify-content: center;
+}
+.add-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 40%;
+}
+.row {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  margin-bottom: 20px;
+}
+.column label {
+  display: block;
+  margin: 7px 0px 0px 0px;
+  padding: 3px 45px 3px 0px;
+}
+.column input {
+  display: block;
+  padding: 3px 50px 3px 0px;
+  margin: 0px 10px 3px 0px;
+}
+.gender {
+  margin-right: 100px;
+}
+.column select {
+  padding: 3px 50px 3px 0px;
+  display: block;
+}
+
+.civil-status {
+  margin-right: 60px;
+}
+
+.birth-date input {
+  padding: 3px 0px 3px 0px;
+}
+.has-child {
+  margin-right: 80px;
+}
+.birth-date {
+  margin-right: 25px;
+}
+.row span,
+.error-alert {
+  color: #d8000c;
+}
+.user-added {
+  padding: 5px 0px 5px 0;
+  background-color: #3ed03e;
+  text-align: center;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+.has-error {
+  border: 1px solid #d8000c;
+}
+.direction {
+  display: inline !important;
+}
+.direction-button {
+  padding: 3px 6px 3px 6px;
+}
+.direction-add-delete {
+  display: flex;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.direction-add-delete button {
+  padding: 5px 10px 5px 10px;
+}
+.direction-add {
+  margin-right: 10px;
+  background-color: #24a0ed;
+  border: 1px solid gray;
+  border-radius: 5px;
+}
+.direction-add:hover {
+  background-color: #63bbf2;
+  border: 1px solid gray;
+}
+.direction-add:active {
+  background-color: #1183ca;
+  border: 1px solid black;
+}
+
+.direction-delete,
+.direction-button {
+  margin-left: 10px;
+  background-color: #ff878d;
+  border: 1px solid gray;
+  border-radius: 5px;
+}
+.direction-button {
+  margin-left: 0px;
+}
+.direction-title {
+  margin-right: 50px;
+}
+.direction-delete:hover,
+.direction-button:hover {
+  background-color: #ffc4c4;
+  border: 1px solid gray;
+}
+.direction-delete:active,
+.direction-button:active {
+  background-color: #f08080;
+  border: 1px solid black;
+}
+.direction-container {
+  justify-content: flex-start;
+}
+.submit-button {
+  padding: 8px 20px 8px 20px;
+  background-color: #2aae2a;
+  border: 1px solid gray;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+.submit-button:hover {
+  background-color: #3ed03e;
+  border: 1px solid gray;
+}
+.submit-button:active {
+  background-color: #1b6f1b;
+  border: 1px solid black;
 }
