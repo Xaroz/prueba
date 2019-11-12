@@ -1,7 +1,7 @@
 import React from "react";
-import MdEye from "react-ionicons/lib/MdEye";
+// import MdEye from "react-ionicons/lib/MdEye";
 import MdTrash from "react-ionicons/lib/MdTrash";
-import MdCreate from "react-ionicons/lib/MdCreate";
+// import MdCreate from "react-ionicons/lib/MdCreate";
 
 export const Table = props => {
   return (
