@@ -109,7 +109,7 @@ img {
   display: flex;
   flex-direction: column;
   background-color: #f1f1f1;
-  min-height: 100vh;
+  \height: 100vh;
   width: 15%;
 }
 .sidebar a {
@@ -341,3 +341,11 @@ table th {
   background-color: #1b6f1b;
   border: 1px solid black;
 }
+input[type="submit"]:disabled {
+  background-color: gray;
+  color: black;
+  opacity: 0.7;
+}
+/* input[type="submit"]:disabled:hover {
+  opacity: 0.6;
+} */

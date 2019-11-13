@@ -246,20 +246,12 @@ export const AddUser = () => {
             </div>
           </div>
 
-          {sucess ? (
-            <input
-              className="submit-button"
-              disabled
-              type="submit"
-              value="Agregar usuario"
-            />
-          ) : (
-            <input
-              className="submit-button"
-              type="submit"
-              value="Agregar usuario"
-            />
-          )}
+          <input
+            className="submit-button"
+            disabled={sucess}
+            type="submit"
+            value="Agregar usuario"
+          />
         </form>
       </div>
 
