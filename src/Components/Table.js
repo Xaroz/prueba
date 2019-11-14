@@ -1,5 +1,5 @@
 import React from "react";
-// import MdEye from "react-ionicons/lib/MdEye";
+import MdEye from "react-ionicons/lib/MdEye";
 import MdTrash from "react-ionicons/lib/MdTrash";
 // import MdCreate from "react-ionicons/lib/MdCreate";
 
@@ -18,10 +18,16 @@ export const Table = props => {
         <td>{props.user.email}</td>
         <td>{props.user.gender}</td>
         <td className="button-container">
-          {/* <button className="view">
+          <button
+            className="view"
+            onClick={() => {
+              props.TogglePopup();
+              props.setViewUser(props.user);
+            }}
+          >
             <MdEye />
           </button>
-          <button className="edit">
+          {/* <button className="edit">
             <MdCreate />
           </button> */}
           <button

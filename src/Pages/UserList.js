@@ -3,11 +3,14 @@ import { Table } from "../Components/Table";
 import { UsersContext } from "../Components/UsersContext";
 import MdArrowRoundForward from "react-ionicons/lib/MdArrowRoundForward";
 import MdArrowRoundBack from "react-ionicons/lib/MdArrowRoundBack";
+import Popup from "../Components/Popup";
 
 export const UserList = () => {
   const { users, setUsers } = useContext(UsersContext);
   const [pageSize] = useState(5);
   const [currentPage, setCurrentPage] = useState(0);
+  const [showPopup, setShowPopup] = useState(false);
+  const [viewUser, setViewUser] = useState(null);
 
   useEffect(() => {
     document.title = "Lista de Usuarios";
@@ -32,6 +35,10 @@ export const UserList = () => {
     setUsers(users.filter(user => user.id !== id));
   };
 
+  const TogglePopup = () => {
+    setShowPopup(!showPopup);
+  };
+
   return (
     <div className="content">
       <h1>Lista de usuarios</h1>
@@ -49,7 +56,13 @@ export const UserList = () => {
           {users
             .slice(currentPage * pageSize, pageSize * (currentPage + 1))
             .map(user => (
-              <Table key={user.id} user={user} DeleteUser={DeleteUser} />
+              <Table
+                key={user.id}
+                user={user}
+                DeleteUser={DeleteUser}
+                TogglePopup={TogglePopup}
+                setViewUser={setViewUser}
+              />
             ))}
         </tbody>
       </table>
@@ -61,6 +74,7 @@ export const UserList = () => {
           <MdArrowRoundForward />
         </button>
       </div>
+      {showPopup ? <Popup TogglePopup={TogglePopup} user={viewUser} /> : null}
     </div>
   );
 };
